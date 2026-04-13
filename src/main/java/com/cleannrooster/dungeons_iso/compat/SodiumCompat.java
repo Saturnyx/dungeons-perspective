@@ -8,7 +8,6 @@ import com.cleannrooster.dungeons_iso.api.cullers.GenericCuller3;
 import com.cleannrooster.dungeons_iso.api.cullers.GenericBlockCuller2;
 import com.cleannrooster.dungeons_iso.config.Config;
 import com.cleannrooster.dungeons_iso.mod.Mod;
-import net.caffeinemc.mods.sodium.client.render.SodiumWorldRenderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
 import net.minecraft.entity.LivingEntity;
@@ -68,8 +67,8 @@ public class SodiumCompat {
         double dub = 1.25*Mod.getZoom()*Mod.zoomMetric;
         box.expand(dub,dub,dub);
 
-        if (MinecraftClient.getInstance().player.age % 2 == 0) {
-            SodiumWorldRenderer.instance().scheduleRebuildForBlockArea((int) box.minX, (int) box.minY, (int) box.minZ, (int) box.maxX, (int) box.maxY, (int) box.maxZ, true);
+        if (net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("sodium") && MinecraftClient.getInstance().player.age % 2 == 0) {
+            net.caffeinemc.mods.sodium.client.render.SodiumWorldRenderer.instance().scheduleRebuildForBlockArea((int) box.minX, (int) box.minY, (int) box.minZ, (int) box.maxX, (int) box.maxY, (int) box.maxZ, true);
         }
 
         for(BlockCuller culler :blockCullers) {

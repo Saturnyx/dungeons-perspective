@@ -66,6 +66,7 @@ dependencies {
     modCompileOnly fileTree(dir: "run/mods/compile", includes: ['*.jar'])
 
     modImplementation "maven.modrinth:sodium:${rootProject.sodium_version}-fabric"
+    modImplementation "maven.modrinth:midnightcontrols:${project.midnightcontrols_version}"
 }
 
 processResources {
